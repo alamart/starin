@@ -5,6 +5,8 @@ import 'package:flutter_countdown_timer/index.dart';
 import 'package:starin/blocs/score_cubit.dart';
 
 class GameScreen extends StatelessWidget {
+  int timer = 60;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,43 +57,52 @@ class GameScreen extends StatelessWidget {
             ],
           ),
           Align(
-            alignment: Alignment.bottomCenter,
-            child: Card(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
-              child: Container(
-                margin: EdgeInsets.all(8),
-                width: 130,
-                height: 130,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white,
-                ),
-                child: CountdownTimer(
-                  endTime: DateTime.now().millisecondsSinceEpoch + 1000 * 60,
-                  widgetBuilder: (_, CurrentRemainingTime time) {
-                    if (time == null) {
-                      return Text(
-                        'Game over',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w100,
-                          color: Colors.black,
-                        ),
-                        textAlign: TextAlign.center,
-                      );
-                    }
-                    return Text(
-                      '${time.sec}',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w100,
-                        color: Colors.black,
-                      ),
-                      textAlign: TextAlign.center,
-                    );
-                  },
-                ),
-              ),
+            alignment: Alignment.center,
+            child: Column(
+              children: <Widget>[
+                CountdownTimer(
+                    endTime:
+                        DateTime.now().millisecondsSinceEpoch + 1000 * timer,
+                    widgetBuilder: (_, CurrentRemainingTime time) {
+                      if (time == null) {
+                        return Text(
+                          'Game over',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w100,
+                            color: Colors.white,
+                          ),
+                          textAlign: TextAlign.center,
+                        );
+                      }
+                      return SizedBox(
+                          height: 200.0,
+                          child: Stack(
+                            children: <Widget>[
+                              Center(
+                                child: Container(
+                                  width: 150,
+                                  height: 150,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 15,
+                                    value: time.sec / timer,
+                                  ),
+                                ),
+                              ),
+                              Center(
+                                child: Text(
+                                  '${time.sec}',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w100,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ));
+                    }),
+              ],
             ),
           )
         ],
