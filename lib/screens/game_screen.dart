@@ -65,15 +65,17 @@ class GameScreen extends StatelessWidget {
                         DateTime.now().millisecondsSinceEpoch + 1000 * timer,
                     widgetBuilder: (_, CurrentRemainingTime time) {
                       if (time == null) {
-                        return Text(
-                          'Game over',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w100,
-                            color: Colors.white,
-                          ),
-                          textAlign: TextAlign.center,
-                        );
+                        return SizedBox(
+                            height: 200.0,
+                            child: Text(
+                              'Game over',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w100,
+                                color: Colors.white,
+                              ),
+                              textAlign: TextAlign.center,
+                            ));
                       }
                       return SizedBox(
                           height: 200.0,
@@ -104,6 +106,118 @@ class GameScreen extends StatelessWidget {
                     }),
               ],
             ),
+          ),
+          SizedBox(height: 40),
+          Center(
+            child: Text("Did",
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w100,
+                  color: Colors.white,
+                )),
+          ),
+          SizedBox(height: 40),
+          Center(
+            child: Row(
+              children: [
+                Stack(
+                  children: <Widget>[
+                    SizedBox(
+                      height: 100,
+                    ),
+                    ThumbnailCard(
+                      title: "Robert Downey Jr",
+                      image: "assets/images/georgewbush.jpg",
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  width: 50,
+                ),
+                Text("Star in",
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w100,
+                      color: Colors.white,
+                    )),
+                SizedBox(
+                  width: 50,
+                ),
+                Stack(
+                  children: <Widget>[
+                    SizedBox(
+                      height: 100,
+                    ),
+                    ThumbnailCard(
+                      title: "The Avengers",
+                      image: "assets/images/film.jpg",
+                    ),
+                  ],
+                )
+              ],
+              mainAxisAlignment: MainAxisAlignment.center,
+            ),
+          ),
+          SizedBox(height: 40),
+          Center(
+            child: Row(
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Icon(Icons.thumb_up),
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.green,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                      textStyle:
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                ),
+                SizedBox(
+                  width: 50,
+                ),
+                SizedBox(
+                  width: 50,
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Icon(Icons.thumb_down),
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.red,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                      textStyle:
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                ),
+              ],
+              mainAxisAlignment: MainAxisAlignment.center,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class ThumbnailCard extends StatelessWidget {
+  final String title;
+  final String image;
+
+  const ThumbnailCard({Key key, this.image, this.title}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        color: Colors.white
+      ),
+      child: Column(
+        children: <Widget>[
+          Image.asset(image, height: 200),
+          Text(
+            title,
+            style: TextStyle(fontWeight: FontWeight.bold),
           )
         ],
       ),
