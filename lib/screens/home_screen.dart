@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:starin/blocs/score_cubit.dart';
+import 'package:starin/blocs/score/score_cubit.dart';
 import 'package:starin/screens/game_screen.dart';
 
 class HomeScreen extends StatelessWidget {

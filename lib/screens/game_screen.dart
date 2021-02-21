@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:flutter_countdown_timer/index.dart';
-import 'package:starin/blocs/score_cubit.dart';
+import 'package:starin/blocs/score/score_cubit.dart';
 
 class GameScreen extends StatelessWidget {
   int timer = 60;
