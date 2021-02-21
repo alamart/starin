@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:starin/blocs/score_cubit.dart';
+import 'package:starin/blocs/score/score_cubit.dart';
 
 void main(){
   group('Score cubit test', (){
