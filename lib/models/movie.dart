@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:equatable/equatable.dart';
+import 'package:starin/models/person.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
 class Movie extends Equatable {
@@ -8,11 +9,14 @@ class Movie extends Equatable {
   String _posterPath;
   String _overview;
   DateTime _releaseDate;
+  List<Person> _cast = [];
 
-  Movie(this._id, this._title, this._posterPath, this._overview, this._releaseDate);
+  Movie(this._id, this._title, this._posterPath, this._overview,
+      this._releaseDate, this._cast);
 
   @override
-  List<Object> get props => [_id, _title, _posterPath, _overview, _releaseDate];
+  List<Object> get props =>
+      [_id, _title, _posterPath, _overview, _releaseDate, _cast];
 
   int get id => _id;
 
@@ -42,6 +46,12 @@ class Movie extends Equatable {
 
   set releaseDate(DateTime value) {
     _releaseDate = value;
+  }
+
+  List get cast => _cast;
+
+  set cast(List value) {
+    _cast = value;
   }
 
   Movie.fromJson(Map<String, dynamic> json) {

@@ -3,7 +3,13 @@ import 'package:starin/models/person.dart';
 import 'package:starin/resources/api_provider.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
-class MovieRepository {
+abstract class GenericMovieRepository{
+  Future<List<Movie>> fetchPopularMovies();
+  Future<List<Movie>> fetchBestMovies();
+  Future<List<Person>> fetchMovieActors(int movieId);
+}
+
+class MovieRepository implements GenericMovieRepository{
   final Movies _movieApiProvider = ApiProvider().getMoviesProvider();
 
   Future<List<Movie>> fetchPopularMovies() async {
@@ -17,8 +23,11 @@ class MovieRepository {
   }
 
   Future<List<Person>> fetchMovieActors(int movieId) async {
-    Map<dynamic, dynamic> queryResults = await _movieApiProvider.getCredits(movieId);
-    return _getListFromPersonResults(queryResults).where((element) => element.occupation == 'Acting');
+    Map<dynamic, dynamic> queryResults =
+        await _movieApiProvider.getCredits(movieId);
+    return _getListFromPersonResults(queryResults)
+        .where((actor) => actor.occupation == 'Acting')
+        .toList();
   }
 
   List<Movie> _getListFromMovieResults(Map<dynamic, dynamic> queryResults) {
@@ -30,7 +39,7 @@ class MovieRepository {
   }
 
   List<Person> _getListFromPersonResults(Map<dynamic, dynamic> queryResults) {
-    Iterable persons = queryResults['results'];
+    Iterable persons = queryResults['cast'];
     if (persons.isEmpty) {
       throw Exception('Failed to get results from API');
     }
@@ -38,6 +47,4 @@ class MovieRepository {
   }
 }
 
-class NetworkError{
-
-}
+class NetworkError {}
