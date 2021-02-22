@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:starin/blocs/score_cubit.dart';
+import 'package:starin/blocs/score/score_cubit.dart';
 import 'package:starin/screens/home_screen.dart';
 
 void main() {
@@ -16,8 +16,6 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           title: 'Starin',
           home: HomeScreen(),
-        )
-    );
+        ));
   }
 }
-

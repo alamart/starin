@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:starin/blocs/game/game_bloc.dart';
+import 'package:starin/blocs/game/game_state.dart';
 import 'package:starin/blocs/score/score_cubit.dart';
+import 'package:starin/repositories/movie_repository.dart';
 import 'package:starin/screens/game_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -23,12 +26,11 @@ class HomeScreen extends StatelessWidget {
             margin: EdgeInsets.only(top: 50),
           ),
           Container(
-            height: 80,
             alignment: Alignment.center,
             child: Text(
-              "Welcome to the quizz ! You'll be asked a series of \"Yes or No\" questions. Answer as many as you can in the allowed time ! Good luck !",
+              "Welcome to the quizz ! You'll be asked a series of \"Yes or No\" questions.\nAnswer as many as you can in the allowed time ! Good luck !",
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 20,
                 fontWeight: FontWeight.w100,
                 color: Colors.white,
               ),
@@ -43,9 +45,9 @@ class HomeScreen extends StatelessWidget {
             child: BlocBuilder<ScoreCubit, ScoreState>(
               builder: (context, state) {
                 return Text(
-                  "Best score : " + state.score.toString(),
+                  "${state.score}\nBest score",
                   style: TextStyle(
-                    fontSize: 12,
+                    fontSize: 15,
                     fontWeight: FontWeight.w100,
                     color: Colors.white,
                   ),
@@ -61,7 +63,10 @@ class HomeScreen extends StatelessWidget {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (_) => BlocProvider.value(
                           value: BlocProvider.of<ScoreCubit>(context),
-                          child: GameScreen(),
+                          child: BlocProvider<GameBloc>(
+                              create: (context) =>
+                                  GameBloc(MovieRepository()),
+                              child: GameScreen()),
                         )));
               },
               style: ElevatedButton.styleFrom(
