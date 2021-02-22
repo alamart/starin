@@ -20,11 +20,22 @@ class GameLoading extends GameState{
 
 class GameLoaded extends GameState{
   final List<Movie> movies;
+  final List<Person> actors;
 
-  GameLoaded(this.movies);
+  GameLoaded(this.movies, this.actors);
 
   @override
   List<Object> get props => [movies];
+
+}
+
+class GameEnded extends GameState{
+  final int currentScore;
+
+  GameEnded(this.currentScore);
+
+  @override
+  List<Object> get props => [currentScore];
 
 }
 
