@@ -1,16 +1,9 @@
 # starin
 
-A new Flutter project.
+Web app quizz about movies and actors.
 
-## Getting Started
+Simple question to answer : "Did <<An actor>> star in <<a movie>>?" 
 
-This project is a starting point for a Flutter application.
+This app is designed as a web application built with Flutter.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The directory "web" can be deploy directly on a server.
