@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:meta/meta_meta.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 class Person extends Equatable {
   final int id;

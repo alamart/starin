@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:equatable/equatable.dart';
 import 'package:starin/models/person.dart';
-import 'package:tmdb_api/tmdb_api.dart';
 
 class Movie extends Equatable {
   int _id;

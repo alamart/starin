@@ -1,14 +1,11 @@
 import 'dart:async';
 
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:starin/models/movie.dart';
 import 'package:starin/models/person.dart';
-import 'package:starin/repositories/movie_repository.dart';
 
 part 'question_event.dart';
-
 part 'question_state.dart';
 
 class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {

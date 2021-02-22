@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:starin/blocs/game/game_bloc.dart';
-import 'package:starin/blocs/game/game_state.dart';
 import 'package:starin/blocs/score/score_cubit.dart';
 import 'package:starin/repositories/movie_repository.dart';
 import 'package:starin/screens/game_screen.dart';
